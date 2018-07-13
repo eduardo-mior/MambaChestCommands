@@ -1,0 +1,242 @@
+##############################
+#+                          +#
+#   CONFIGURAÇÕES DO MENU    #
+#+                          +#
+##############################
+
+menu-settings:
+
+  # Nome - É o titulo do menu - OBRIGATÓRIO
+  name: '&1Menu de testes!'
+
+  # Linhas - O número de linhas que tera o seu menu - OBRIGATÓRIO
+  # O número de linhas sera ignorado caso o tipo não for CHEST!
+  rows: 6
+  
+  #Infelizmente nas versões abaixdo da 1.8 não podemos escolher o tipo do menu (CHEST, DISPENSER...)
+
+  # Comando - Comando usado para abrir o menu. - OPCIONAL
+  # Para não queira usar um comando para abrir o menu deixe apenas as duas aspas em brancos. Exemplo: ''
+  # Caso você queira criar aliases para o comando coloque um ; depois do comando. Exemplo: 'menu; abrirmenu; abre;'
+  command: 'menu'
+
+  # Atualização automatica - OPCIONAL
+  # Isto serve para atualizar os itens do menu automaticamente a cada X segundos.
+  auto-refresh: 5
+
+  # Comandos ao abrir - Comandos ou tarefas executadas ao abrir o menu - OPCIONAL
+  # Util caso você queira colocar um SOM ao abrir o MENU ou caso você queira colocar uma mensagem.
+  open-action: 'sound: note pling; tell: &eVocê abriu o menu de testes do MambaChestCommands!'
+
+  # Abrir menu com - Item que ao ser clicado abre o men - OPCIONAL
+  # Este menu sera aberto quando o player clicar com o botão direito segurando uma lã laranja [35:1]
+  open-with-item:
+    id: wool:1
+    left-click: false
+    right-click: true
+
+
+######################
+#+                  +#
+#       ITEMS        #
+#+                  +#
+######################
+
+# Este primeiro item chamado item-de-testes contem todas as explicações e todas as opções que você pode usar.
+
+# ID/Nome do Icone (não pode ser repetido!)
+item-de-testes:
+  # Comando ou ação que sera executada quando o player clicar com o botão esquerdo do mouse!
+  LEFT-CLICK-COMMAND: 'tell: &bVocê clicou com o botão esquerdo no item de testes do menu!'
+  
+  # Comando ou ação que sera executada quando o player clicar com o botão direito do mouse!
+  RIGHT-CLICK-COMMAND: 'tell: &aVocê clicou com o botão direito no item de testes do menu!'
+
+  # Manter aberto.
+  # Se esta opção estiver true o menu não ira ser fechado quando o player clicar no item.
+  # Se a opção estiver false o menu sera fechado normalmente.
+  KEEP-OPEN: true
+  
+  # Nome de exibição do item.
+  NAME: '&eEste é o nome do item!'
+
+  # Lore do item.
+  LORE:
+    - ''
+    - '&dEsta é a lore do item!'
+    - '&bEla pode ter varias linhas.'
+    - '&aA lore é muito legal hehe.'
+
+  # ID do item, pode ser em número ou nome (recomendo botar o número) - OBRIGATÓRIO
+  ID: 35
+  
+  # Data do item, neste caso sera uma Lã preta 35:15
+  DATA-VALUE: 15
+  
+  # Número do slot em que o item aparecera no menu. - OBRIGATÓRIO
+  # Lembre-se, o primeiro slot é o 0, o segundo é o 1 e assim por diante.
+  SLOT: 4
+
+  # Quantidade do item, padrão = 1
+  AMOUNT: 1
+
+  # Encantamentos do item. Você pode botar quantos encantamentos quiser basta seguir o padrão!
+  # encantamento, nivel; outroEncantamento, nivel; maisEncantamento, nivel
+  # Para ver a lista dos encantamentos validos acesse o arquivo ajuda.yml
+  ENCHANTMENT: knockback, 10; durability, 10
+
+  # Esconder atributos. Serve para remover as lores padrões do minecraft.
+  # Caso esta opção estiver true, os encantamentos não irão aparecer mas o item ficara brilhando!
+  # Os efeitos das poções também não irão aparecer, e o dano das armas também não irão aparecer.
+  #HIDE-ATTRIBUTES: true
+  
+  # Cor da armadura. Esta opção é valida apenas para as armaduras de couro!
+  #COLOR: 6
+
+  # Infelizmente nas versões abaixo da 1.8 não podemos colocar Skins nas SKULL :(
+  
+  # Preço em coins para poder usar o item. 
+  # Para esta opção funcionar você precisa estar usando o plugin vault e um plugin de economia compativel!
+  #PRICE: 5000
+  
+  # Pontos necessarios para poder usar o item.
+  # Para esta opção funcionar você precisa estar usando o plugin PlayerPoints!
+  #PRICE: 250
+  
+  # Níveis de XP necessarios para poder usar o item.
+  # Ao clicar o player ira perder X niveis de XP!
+  #LEVELS: 5
+  
+  # Itens necessarios para poder usar o item. Neste caso serão cobrados 32 pedregulhos.
+  # Você só pode cobrar um tipo de item. Exemplo: ID, Quantidade
+  #REQUIRED-ITEM: '4, 32'
+  
+  # Permissão para poder clicar no item.
+  #PERMISSION: permissao.para.clickar.item.teste
+  
+  # Mensagem de erro caso o player não tenha permissão paara usar o item.
+  #PERMISSION-MESSAGE: '&cVocê não tem permissão para usar este botão!'
+  
+  # Permissão para poder ver o item no menu (permissão para o item aparecer).
+  # Sem essa permissão o item nem aparece no menu do player.
+  #VIEW-PERMISSION: permissao.para.ver.item.teste
+
+teleportar-para-o-spawn:
+  LEFT-CLICK-COMMAND: 'spawn'
+  RIGHT-CLICK-COMMAND: 'spawn'
+  NAME: '&eClique para ir para o spawn!'
+  LORE:
+    - '&fClique para executar o comando /spawn'
+  ID: 355
+  SLOT: 19
+
+ouvir-villagers:
+  LEFT-CLICK-COMMAND: 'sound: villager yes'
+  RIGHT-CLICK-COMMAND: 'sound: villager no'
+  LORE:
+    - '&fClique com o esquerdo para ouvir o &aSIM'
+    - '&fClique com o direito para ouvi o &cNAO'
+  ID: 383
+  SLOT: 21
+  DATA-VALUE: 120
+  KEEP-OPEN: true
+  
+comprar-pedras-com-dinheiro:
+  LEFT-CLICK-COMMAND: 'give: 1, 10; tell: &aPedras adquiridas com sucesso!'
+  RIGHT-CLICK-COMMAND: 'give: 1, 10; tell: &aPedras adquiridas com sucesso!'
+  NAME: '&7&nComprar pedras!'
+  LORE:
+    - '&fPreço: &e100$'
+    - '&fQuantidade: &e10x'
+  ID: 343
+  SLOT: 23
+  PRICE: 100
+
+pague-para-falar-no-global:
+  LEFT-CLICK-COMMAND: 'broadcast: &e{player} &8- &6Olá pessoal! Paguei 10 pedras para falar no global!; givemoney: 1'
+  RIGHT-CLICK-COMMAND: 'broadcast: &e{player} &8- &6Olá pessoal! Paguei 10 pedras para falar no global!; givemoney: 1'
+  NAME: '&ePague para falar no global!'
+  LORE:
+    - ''
+    - 'Pague 10 pedras para pode enviar'
+    - 'um SALVE para todos verem!'
+    - 'E ganhe 1 coin de brinde!'
+  ID: 385
+  SLOT: 25
+  REQUIRED-ITEM: '1, 10'
+
+informacoes-youtuber:
+  LEFT-CLICK-COMMAND: 'tell: &aPara solicitar sua Tag nos chame no twitter: &2@RUSH-MC; tell: &aNos envie uma DM com o link do canal e seu contato!'
+  RIGHT-CLICK-COMMAND: 'tell: &aPara solicitar sua Tag nos chame no twitter: &2@RUSH-MC tell: &aNos envie uma DM com o link do canal e seu contato!'
+  NAME: '&cInformações da tag YT'
+  LORE:
+    - ''
+    - '&fRequisitos minimos:'
+    - ' &4&l* &71000 inscritos'
+    - ' &4&l* &71 vídeo gravado no servidor'
+    - ' &4&l* &7Média de 50 likes por vídeo'
+    - ' &4&l* &7Média de 300 views por vídeo'
+    - ''
+    - '&f&nClique para solicitar sua tag'
+  ID: 331
+  SLOT: 27
+  
+teste-de-permisssao:
+  LEFT-CLICK-COMMAND: 'tell: &a[v] Você possui a permissão!'
+  RIGHT-CLICK-COMMAND: 'tell: &a[v] Você possui a permissão!'
+  NAME: '&8Teste de permissão!'
+  LORE:
+    - ''
+    - 'Para pode clicar neste item você precisa'
+    - 'da permissão "chestcommands.teste.perm"'
+    - ''
+    - 'Caso você tente usar o item sem ter permissão'
+    - 'você recebera uma mensagem de erro.'
+  ID: 35
+  DATA-VALUE: 14
+  SLOT: 33
+  PERMISSION: chestcommands.teste.perm
+  PERMISSION-MESSAGE: '&cVocê não possui permissão para clicar neste item!'
+
+algumas-informacoes:
+  NAME: '&2Informações'
+  LORE:
+    - ''
+    - '&7- Seu nick: {player}'
+    - '&7- Seu money: {money}'
+    - '&7- Mundo atual: {world}'
+    - '&7- Players: {online}/{max_players}'
+    - '&7- Seu nivel de XP: {xp_level}'
+  ID: 323
+  KEEP-OPEN: true
+  SLOT: 35
+
+# Teste com atributos e sem encantamentos
+espada-com-atributos-sem-encantamentos:
+  NAME: '&fEspada com os atributos visiveis'
+  ID: 276
+  KEEP-OPEN: true
+  SLOT: 47
+# Teste sem atributos e sem encantamentos
+espada-sem-atributos-sem-encantamentos:
+  NAME: '&fEspada com os atributos escondidos'
+  ID: 276
+  HIDE-ATTRIBUTES: true
+  KEEP-OPEN: true
+  SLOT: 48
+
+# Teste com atributos e com encantamentos
+espada-com-atributos-com-encantamentos:
+  NAME: '&fEspada com os atributos visiveis'
+  ID: 276
+  KEEP-OPEN: true
+  SLOT: 50
+  ENCHANTMENT: knockback, 10; durability, 10
+# Teste sem atributos e com encantamentos
+espada-sem-atributos-com-encantamentos:
+  NAME: '&fEspada com os atributos escondidos'
+  ID: 276
+  HIDE-ATTRIBUTES: true
+  KEEP-OPEN: true
+  SLOT: 51
+  ENCHANTMENT: knockback, 10; durability, 10

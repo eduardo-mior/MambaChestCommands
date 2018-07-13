@@ -1,0 +1,97 @@
+package com.gmail.filoghost.chestcommands.nms;
+
+import java.lang.reflect.Method;
+
+import org.bukkit.inventory.ItemStack;
+
+import com.gmail.filoghost.chestcommands.ChestCommands;
+import com.gmail.filoghost.chestcommands.util.Utils;
+
+public class AttributeRemover {
+	
+	private static boolean useReflection;
+	
+	// Reflection stuff
+	private static Class<?> nbtTagCompoundClass;
+	private static Class<?> nbtTagListClass;
+	private static Class<?> nmsItemstackClass;
+	private static Method asNmsCopyMethod; // static
+	private static Method asCraftMirrorMethod; // static
+	private static Method hasTagMethod;
+	private static Method getTagMethod;
+	private static Method setTagMethod;
+	private static Method nbtSetMethod;
+	
+	
+	public static boolean setup() {
+			
+			try {
+				// Try to get the NMS methods and classes
+				nbtTagCompoundClass = getNmsClass("NBTTagCompound");
+				nbtTagListClass = getNmsClass("NBTTagList");
+				nmsItemstackClass = getNmsClass("ItemStack");
+				
+				asNmsCopyMethod = getObcClass("inventory.CraftItemStack").getMethod("asNMSCopy", ItemStack.class);
+				asCraftMirrorMethod = getObcClass("inventory.CraftItemStack").getMethod("asCraftMirror", nmsItemstackClass);
+				
+				hasTagMethod = nmsItemstackClass.getMethod("hasTag");
+				getTagMethod = nmsItemstackClass.getMethod("getTag");
+				setTagMethod = nmsItemstackClass.getMethod("setTag", nbtTagCompoundClass);
+				
+				nbtSetMethod = nbtTagCompoundClass.getMethod("set", String.class, getNmsClass("NBTBase"));
+				
+				useReflection = true;
+				
+			} catch (Exception e) {
+				ChestCommands.getInstance().getLogger().info("Não foi possivel ativar o removedor de atributos (FLAGS) para esta versão (" + e + "). Todos os atributos dos itens serão exibidos.");
+			}
+		
+		return true;
+	}
+	
+	
+	private static Class<?> getNmsClass(String name) throws ClassNotFoundException {
+		return Class.forName("net.minecraft.server." + Utils.getBukkitVersion() + "." + name);
+	}
+	
+	private static Class<?> getObcClass(String name) throws ClassNotFoundException {
+		return Class.forName("org.bukkit.craftbukkit." + Utils.getBukkitVersion() + "." + name);
+	}
+	
+	public static ItemStack hideAttributes(ItemStack item) {
+		if (item == null) {
+			return null;
+		}
+		
+		if (useReflection) {
+			try {
+				
+				Object nmsItemstack = asNmsCopyMethod.invoke(null, item);
+				if (nmsItemstack == null) {
+					return item;
+				}
+				
+				Object nbtCompound;
+				if ((Boolean) hasTagMethod.invoke(nmsItemstack)) {
+					nbtCompound = getTagMethod.invoke(nmsItemstack);
+				} else {
+					nbtCompound = nbtTagCompoundClass.newInstance();
+					setTagMethod.invoke(nmsItemstack, nbtCompound);
+				}	
+				
+				if (nbtCompound == null) {
+					return item;
+				}
+				
+				Object nbtList = nbtTagListClass.newInstance();
+				nbtSetMethod.invoke(nbtCompound, "AttributeModifiers", nbtList);
+				return (ItemStack) asCraftMirrorMethod.invoke(null, nmsItemstack);
+				
+			} catch (Exception e) {	}
+		}
+		
+		// On failure
+		return item;
+	}
+	
+}

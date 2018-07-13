@@ -1,0 +1,58 @@
+name: ChestCommands
+main: com.gmail.filoghost.chestcommands.ChestCommands
+version: 3.1.4
+softdepend: [Vault, PlayerPoints]
+
+commands:
+   chestcommands:
+      description: Comando principal do plugin.
+      usage: /<command> (Startup error)
+      aliases: [cc]
+      permission: chestcommands.command
+      permission-message: "§cVocê não tem permissão para utilizar este comando."
+
+permissions:
+  chestcommands.command:
+    description: Permissão para poder usar o comando base do plugin.
+    default: op
+  chestcommands.command.help:
+    description: Permissão para poder ver a lista de comandos do plugin.
+    default: op
+  chestcommands.command.reload:
+    description: Permissão para poder recarregar as configurações e os menus do plugin.
+    default: op
+  chestcommands.command.open:
+    description: Permissão para poder abrir um menu especifico pelo comando.
+    default: op
+  chestcommands.command.open.others:
+    description: Permissão para poder abrir um menu especifico para um player pelo comando.
+    default: op
+  chestcommands.command.list:
+    description: Permissão para poder ver todos os menus carregados.
+    default: op
+
+  chestcommands.errors:
+    description: Permissão para poder ver os erros quem o plugin encontra (ver as logs).
+    default: op
+  chestcommands.sign:
+    description: Permissão para poder criar uma placa que abre um menu.
+    default: op
+    
+  chestcommands.bypass.economy:
+    description: Permissão para poder usar itens com preço sem pagar nada.
+    default: op
+    
+  chestcommands.all:
+    description: Permissão geral do plugin.
+    default: op
+    children:
+      chestcommands.command: true
+      chestcommands.command.help: true
+      chestcommands.command.reload: true
+      chestcommands.command.open: true
+      chestcommands.command.open.others: true
+      chestcommands.command.list: true
+      chestcommands.errors: true
+      chestcommands.sign: true
+      chestcommands.bypass.economy: true
+      chestcommands.open.*: true

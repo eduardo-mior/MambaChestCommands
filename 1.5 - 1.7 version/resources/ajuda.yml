@@ -1,0 +1,73 @@
+#### Bem vindo ao arquivo de ajuda do MambaChestCommands! ####
+
+
+###
+#Infelizmente nas versões abaixdo da 1.8 não podemos escolher o tipo do menu (CHEST, DISPENSER...)
+###
+
+
+###
+#Lista de variaveis do plugin:
+# {player}      - Retorna o nome do player 
+# {money}       - Retorna o money do player
+# {world}       - Retorna o mundo do player
+# {online}      - Retorna a quantia de players online
+# {max_players} - Retorna a quanta maxima de players
+# {points}      - Retorna os pontos do player
+# {xp_level}    - Retorna o nivel de XP do player
+###
+
+
+###
+#Lista de tipos de comandos que podem ser executados
+# console:     - Executa o comando pelo console
+# op:          - Executa o comando como se o player estivesse de OP
+# server:      - Envia o player para outro servidor
+# tell:        - Envia uma mensagem para o player
+# broadcast:   - Envia uma mensagem para todos do servidor
+# givemoney:   - Envia money para o player
+# givepoints:  - Envia pontos para o player
+# sound:       - Executa um som para o player
+# open:        - Abre outro menu
+###
+
+
+###
+#Lista de Encantamentos validos: 
+# Protection 
+# Fire Protection 
+# Feather Falling 
+# Blast Protection
+# Projectile Protection
+# Respiration
+# Aqua Affinity
+# Thorns
+# Sharpness
+# Smite
+# Bane Of Arthropods
+# Knockback
+# Fire Aspect
+# Looting
+# Efficiency
+# Silk Touch
+# Unbreaking
+# Fortune
+# Power
+# Punch
+# Flame
+# Infinity
+###
+
+###
+#Lista de permissões:
+# chestcommands.command              - Permissão para usar o comando geral do plugin /chestcommands
+# chestcommands.command.help         - Permissão para ver a lista de comandos do plugin
+# chestcommands.command.reload       - Permissão para recarregar as configurações do plugin
+# chestcommands.command.open         - Permissão para abrir um menu usando o comando /chestcommands open
+# chestcommands.command.open.others  - Permissão para abrir um menu para um outro player usando o comando
+# chestcommands.command.list         - Permissão para ver a lista de menus carregados
+# chestcommands.errors               - Permissão para ver as logs de erros do plugin
+# chestcommands.sign                 - Permissão para criar uma placa que abre um menu ao ser clicada
+# chestcommands.bypass.economy       - Permissão para não precisar de money ao usar itens com preço
+# chestcommands.all                  - Permissão total do plugin.
+###                                  
