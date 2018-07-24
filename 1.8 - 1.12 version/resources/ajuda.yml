@@ -1,4 +1,10 @@
-#### Bem vindo ao arquivo de ajuda do MambaChestCommands! ####
+#### Bem vindo ao arquivo de ajuda do MambaChestCommands! #### 1.8 - 1.12 VERSION #### v1 ####
+
+
+###
+#Tópico oficial do plugin com a documentação completa:
+# https://dev.bukkit.org/projects/chest-commands
+###
 
 
 ###
@@ -6,6 +12,13 @@
 #R: Simples! Para fazer o efeito de GLOW basta colocar algum encantamento no item
 #   e depois ativar o HIDE-ATTRIBUTES! O item vai ficar com brilho mas sem encantamento.
 ##
+
+
+###
+#Como conseguir a URL de uma SKULL para colocar no menu?
+#Tutorial 1: http://gamersboard.com.br/topic/51984-tutorial-itemstack-getskullcustom/
+#Tutorial 2: http://gamersboard.com.br/topic/58786-criando-qualquer-cabe%C3%A7a-atrav%C3%A9s-de-url/
+###
 
 
 ###
@@ -30,7 +43,6 @@
 # {max_players} - Retorna a quanta maxima de players
 # {points}      - Retorna os pontos do player
 # {xp_level}    - Retorna o nivel de XP do player
-#
 ###
 
 

@@ -101,7 +101,7 @@ item-de-testes:
   
   # Pontos necessarios para poder usar o item.
   # Para esta opção funcionar você precisa estar usando o plugin PlayerPoints!
-  #PRICE: 250
+  #POINTS: 250
   
   # Níveis de XP necessarios para poder usar o item.
   # Ao clicar o player ira perder X niveis de XP!
